@@ -1,0 +1,9 @@
+# Candidate data
+data/
+
+# Environment variables (API keys — never commit!)
+.env
+
+# Python cache
+__pycache__/
+*.pyc
