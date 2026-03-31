@@ -92,13 +92,16 @@ footer    { visibility: hidden; }
 .hero-title {
     font-size: 2.4rem;
     font-weight: 700;
+    margin: 0;
+    position: relative;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+.hero-title .highlight {
     background: linear-gradient(90deg, #818cf8, #c084fc, #f472b6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin: 0;
-    position: relative;
-    letter-spacing: -0.5px;
 }
 .hero-subtitle {
     color: #94a3b8;
@@ -600,7 +603,7 @@ render_sidebar(st.session_state.candidate_info)
 st.markdown("""
 <div class="hero-banner">
     <div class="hero-badge">✦ AI-Powered Recruitment</div>
-    <h1 class="hero-title">🌟 TalentScout</h1>
+    <h1 class="hero-title">🌟 <span class="highlight">TalentScout</span></h1>
     <p class="hero-subtitle">Your intelligent hiring assistant — meet <strong>Disha</strong></p>
 </div>
 """, unsafe_allow_html=True)
