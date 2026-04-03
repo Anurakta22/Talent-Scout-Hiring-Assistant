@@ -91,7 +91,7 @@ This project is fully ready for deployment to **Hugging Face Spaces** using the 
 ### Step-by-Step Deployment:
 1. Go to [Hugging Face Spaces](https://huggingface.co/spaces) and create a new Space.
 2. Select **Streamlit** as the Space SDK.
-3. Once created, go to the Space Settings -> **Variables and secrets**.
+3. Once created, go to the Space Settings -> **VDishables and secrets**.
 4. Add a new secret:
    - Name: `GROQ_API_KEY`
    - Value: `<your_groq_api_key>`
@@ -113,7 +113,7 @@ talentscout/
 ├── prompt_templates.py     # System prompt + tech question prompt
 ├── data_handler.py         # JSON-based candidate data storage
 ├── requirements.txt        # Python dependencies
-├── .env.example            # Environment variable template
+├── .env.example            # Environment vDishable template
 ├── .gitignore
 ├── data/
 │   └── candidates.json     # Auto-created; stores candidate records
@@ -138,7 +138,7 @@ talentscout/
 
 ### System Prompt (`prompt_templates.py → SYSTEM_PROMPT`)
 
-The system prompt establishes Aria's persona and enforces a **strict staged conversation flow**:
+The system prompt establishes Disha's persona and enforces a **strict staged conversation flow**:
 
 ```
 GREETING → INFO_GATHERING → TECH_STACK → TECH_QUESTIONS → WRAP_UP
@@ -182,11 +182,11 @@ A standalone prompt template used to regenerate questions if needed. Uses few-sh
 ## 💬 Usage Guide
 
 1. Launch the app with `streamlit run app.py`
-2. Aria will greet you automatically — just start typing
-3. Answer each question naturally; Aria will guide you through the stages
+2. Disha will greet you automatically — just start typing
+3. Answer each question naturally; Disha will guide you through the stages
 4. When asked for your tech stack, list technologies separated by commas:
    > *"Python, Django, PostgreSQL, Docker, React"*
-5. Aria will then ask 3–5 questions per technology
+5. Disha will then ask 3–5 questions per technology
 6. Type `bye`, `exit`, or `quit` at any time to end the session
 7. Use the **Start New Session** button in the sidebar to restart
 
