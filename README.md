@@ -11,6 +11,8 @@ pinned: false
 
 # 🤝 TalentScout — AI Hiring Assistant
 
+[![Live on Hugging Face Spaces](https://img.shields.io/badge/🚀_Live_Demo-Hugging_Face_Spaces-indigo?style=for-the-badge)](https://huggingface.co/spaces/Anurakta/TalentScout-Hiring-Assistant)
+
 An intelligent chatbot that conducts initial candidate screening for technology positions. Powered by **Groq LLM (Llama 3.3 70B)** and built with **Streamlit**.
 
 ---
