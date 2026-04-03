@@ -13,9 +13,7 @@ from chatbot import chat, is_exit_intent, get_initial_greeting, get_farewell_mes
 from data_handler import save_candidate
 from sentiment_analyzer import analyze, overall_sentiment
 
-# ---------------------------------------------------------------------------
 # Page Configuration
-# ---------------------------------------------------------------------------
 st.set_page_config(
     page_title="TalentScout | Hiring Assistant",
     page_icon="🌟",
@@ -23,9 +21,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ---------------------------------------------------------------------------
 # Premium CSS
-# ---------------------------------------------------------------------------
 st.markdown("""
 <style>
 /* ── Google Font ── */
@@ -308,10 +304,7 @@ footer    { visibility: hidden; }
 </style>
 """, unsafe_allow_html=True)
 
-
-# ---------------------------------------------------------------------------
 # Helper Functions
-# ---------------------------------------------------------------------------
 def init_session() -> None:
     """Initialize all required session state variables."""
     defaults = {
@@ -454,7 +447,7 @@ def render_sentiment_panel() -> None:
         )
         return
 
-    # ── Latest message sentiment ──
+    # Latest message sentiment 
     if last:
         st.markdown(
             f'''<div class="info-card">
@@ -472,7 +465,7 @@ def render_sentiment_panel() -> None:
             unsafe_allow_html=True,
         )
 
-    # ── Overall session sentiment ──
+    # Overall session sentiment 
     overall = overall_sentiment(scores)
     st.markdown(
         f'''<div class="info-card">
@@ -586,20 +579,13 @@ def render_sidebar(info: dict) -> None:
             unsafe_allow_html=True,
         )
 
-
-# ---------------------------------------------------------------------------
 # Initialize
-# ---------------------------------------------------------------------------
 init_session()
 
-# ---------------------------------------------------------------------------
 # Sidebar
-# ---------------------------------------------------------------------------
 render_sidebar(st.session_state.candidate_info)
 
-# ---------------------------------------------------------------------------
 # Header
-# ---------------------------------------------------------------------------
 st.markdown("""
 <div class="hero-banner">
     <div class="hero-badge">✦ AI-Powered Recruitment</div>
@@ -620,17 +606,13 @@ if not st.session_state.greeted:
     st.session_state.greeted = True
     st.session_state.question_start_time = time.time()
 
-# ---------------------------------------------------------------------------
 # Render Chat History
-# ---------------------------------------------------------------------------
 for msg in st.session_state.messages:
     avatar = "🌟" if msg["role"] == "assistant" else "👤"
     with st.chat_message(msg["role"], avatar=avatar):
         st.markdown(msg["content"])
 
-# ---------------------------------------------------------------------------
 # Chat Input
-# ---------------------------------------------------------------------------
 if st.session_state.conversation_ended:
     st.markdown("""
     <div class="ended-notice">
@@ -646,12 +628,12 @@ else:
             resp_time = time.time() - st.session_state.question_start_time
             st.session_state.response_times.append(resp_time)
 
-        # -- Display user message --
+        # Display user message 
         with st.chat_message("user", avatar="👤"):
             st.markdown(user_input)
         st.session_state.messages.append({"role": "user", "content": user_input})
 
-        # -- Exit intent --
+        # Exit intent
         if is_exit_intent(user_input):
             farewell = get_farewell_message()
             if not st.session_state.data_saved and st.session_state.candidate_info:
@@ -666,7 +648,7 @@ else:
             st.rerun()
 
         else:
-            # -- Input Validation Interceptor --
+            # Input Validation Interceptor 
             # Check what the assistant asked in the LAST message
             validation_error = None
             if len(st.session_state.history) > 0:
@@ -682,7 +664,7 @@ else:
                 st.session_state.messages.append({"role": "assistant", "content": validation_error})
 
             else:
-                # -- Regular LLM response --
+                # Regular LLM response 
                 with st.chat_message("assistant", avatar="🌟"):
                     with st.spinner("Disha is typing…"):
                         try:
@@ -702,20 +684,20 @@ else:
                     clean_response = re.sub(r'\[STAGE:.*?\]', '', response, flags=re.IGNORECASE).strip()
                     st.markdown(clean_response)
 
-                # -- Update history --
+                # Update history 
                 st.session_state.history.append({"role": "user",      "content": user_input})
                 st.session_state.history.append({"role": "assistant",  "content": response})  # LLM needs to remember the tags
                 st.session_state.messages.append({"role": "assistant", "content": clean_response}) # User doesn't see them
 
-                # -- Sentiment analysis on user message --
+                # Sentiment analysis on user message 
                 sentiment = analyze(user_input)
                 st.session_state.sentiment_scores.append(sentiment["compound"])
                 st.session_state.last_sentiment = sentiment
 
-                # -- Extract info + update stage --
+                # Extract info + update stage 
                 _extract_candidate_info(user_input, response)
 
-                # -- Auto-save on completion --
+                # Auto-save on completion 
                 completion_signals = ["next steps", "thank you for", "screening is complete", "we'll be in touch", "all the best"]
                 if (
                     not st.session_state.data_saved
