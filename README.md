@@ -28,7 +28,7 @@ TalentScout's Hiring Assistant, **Disha**, guides candidates through a structure
 4. **Auto-generates** tailored technical questions per technology
 5. **Saves** a session record to local storage and gracefully wraps up
 
-### ✨ Premium Bonus Features Included
+### ✨ Bonus Features Included
 - **UI/UX Overhaul**: Glassmorphism sidebar, animated gradient hero, live 5-step progress tracker, and premium chat bubbles.
 - **Multilingual Support**: Auto-detects the candidate's language and natively translates both responses and internal state tracking.
 - **Sentiment Analysis**: Live VADER NLP mood tracker measuring candidate emotional polarity.
@@ -84,26 +84,6 @@ streamlit run app.py
 ```
 
 The app opens at `http://localhost:8501` in your browser.
-
----
-
-## ☁️ Cloud Deployment (Hugging Face Spaces)
-
-This project is fully ready for deployment to **Hugging Face Spaces** using the Streamlit SDK. 
-
-### Step-by-Step Deployment:
-1. Go to [Hugging Face Spaces](https://huggingface.co/spaces) and create a new Space.
-2. Select **Streamlit** as the Space SDK.
-3. Once created, go to the Space Settings -> **VDishables and secrets**.
-4. Add a new secret:
-   - Name: `GROQ_API_KEY`
-   - Value: `<your_groq_api_key>`
-5. Clone the space repository locally or upload your files directly via the HF UI. You need to upload:
-   - `app.py`, `chatbot.py`, `data_handler.py`, `prompt_templates.py`, `sentiment_analyzer.py`
-   - `requirements.txt`
-6. The Space will automatically install the requirements and launch `app.py`.
-
-*Note: In the cloud, the `data/candidates.json` file is reset every time the container restarts, which is expected behavior for a cloud-hosted demo without an external database.*
 
 ---
 
@@ -189,7 +169,7 @@ A standalone prompt template used to regenerate questions if needed. Uses few-sh
 3. Answer each question naturally; Disha will guide you through the stages
 4. When asked for your tech stack, list technologies separated by commas:
    > *"Python, Django, PostgreSQL, Docker, React"*
-5. Disha will then ask 3–5 questions per technology
+5. Disha will then ask few questions on important technology stack
 6. Type `bye`, `exit`, or `quit` at any time to end the session
 7. Use the **Start New Session** button in the sidebar to restart
 
