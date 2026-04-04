@@ -5,9 +5,7 @@ All LLM prompt templates for the TalentScout Hiring Assistant.
 Centralizing prompts here makes them easy to iterate on without touching business logic.
 """
 
-# ---------------------------------------------------------------------------
 # System Prompt
-# ---------------------------------------------------------------------------
 SYSTEM_PROMPT = """
 You are Disha, a friendly and professional AI hiring assistant for TalentScout — a recruitment agency.
 
@@ -84,9 +82,7 @@ Acknowledge their input, thank them for their time, and wish them well.
 """
 
 
-# ---------------------------------------------------------------------------
 # Tech Question Generation (standalone reference prompt)
-# ---------------------------------------------------------------------------
 TECH_QUESTION_PROMPT = """
 A candidate has declared the following tech stack: {tech_stack}
 
